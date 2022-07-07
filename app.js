@@ -6,7 +6,9 @@ const { response } = require("express");
 const app = express();
 
 var Mailchimp = require('mailchimp-api-v3');
-var mailchimp = new Mailchimp("Write your full API Key here");
+
+// Write your Own Full API KEY
+var mailchimp = new Mailchimp("");
 
 app.use("/public" , express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -17,15 +19,19 @@ app.get("/",function(req,res){
 });
 
 client.setConfig({
-    apiKey:"Write your API Key here without 'us14' thing ",
-    server:"Write your Server here like this 'us14'",
+    //Write your API Key here without 'us14' thing
+    apiKey:"",
+    
+    //Write your Server here like this us14 thing
+    server:"",
 });
 
 app.post("/" , function(req,res){
     var email = req.body.email;
     console.log(email);
 
-mailchimp.post("/lists/Write your list id here/members",{
+// Write your list id like db________
+mailchimp.post("/lists/list id/members",{
     email_address : email ,
     status: 'subscribed',
 })
