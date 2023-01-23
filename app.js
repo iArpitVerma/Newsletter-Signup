@@ -4,6 +4,10 @@ const https = require("https");
 const client = require("@mailchimp/mailchimp_marketing");
 const { response } = require("express");
 const app = express();
+// Environment Variables - To be declared in Railway.app
+const Apikey = process.env.APIKEY;
+const Server = process.env.Server;
+const Listid = process.env.LISTID;
 
 var Mailchimp = require('mailchimp-api-v3');
 
@@ -20,10 +24,10 @@ app.get("/",function(req,res){
 
 client.setConfig({
     //Write your API Key here without 'us14' thing
-    apiKey:"",
+    apiKey:Apikey,
     
     //Write your Server here like this us14 thing
-    server:"",
+    server:Server,
 });
 
 app.post("/" , function(req,res){
@@ -31,7 +35,7 @@ app.post("/" , function(req,res){
     console.log(email);
 
 // Write your list id like db________
-mailchimp.post("/lists/list id/members",{
+mailchimp.post("/lists/"+Listid +"/members",{
     email_address : email ,
     status: 'subscribed',
 })
