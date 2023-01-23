@@ -12,7 +12,7 @@ const Listid = process.env.LISTID;
 var Mailchimp = require('mailchimp-api-v3');
 
 // Write your Own Full API KEY
-var mailchimp = new Mailchimp("");
+var mailchimp = new Mailchimp(Apikey+"-"+Listid);
 
 app.use("/public" , express.static("public"));
 app.use(bodyParser.urlencoded({extended:true}));
