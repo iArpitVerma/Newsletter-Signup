@@ -6,7 +6,7 @@ const { response } = require("express");
 const app = express();
 // Environment Variables - To be declared in Railway.app
 const Apikey = process.env.APIKEY;
-const Server = process.env.Server;
+const Server = process.env.SERVER;
 const Listid = process.env.LISTID;
 
 var Mailchimp = require('mailchimp-api-v3');
